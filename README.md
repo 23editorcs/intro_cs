@@ -1,4 +1,4 @@
-# Python Programming - An Introduction to Computer Science
+# John Zelle - Python Programming - An Introduction to Computer Science
 THE WORKBOOK OF PYTHON PROGRAMMING - AN INTRODUCTION TO COMPUTER SCIENCE
 
 Hello everyone, 
