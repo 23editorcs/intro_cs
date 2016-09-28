@@ -13,12 +13,18 @@ def main():
     print('The program gets a score from 0-100 and returns a grade.')
     # Create a lookup table
     grades = ['F', 'F', 'F', 'F', 'F', 'F', 'D', 'C', 'B', 'A', 'A']
-    # Get a score input
-    score = eval(input('Enter the score from 0-100: '))
-    # Convert to index to lookup
-    index = score // 10
-    # Rule them all
-    print('Your grade is {0}.'.format(grades[index]))
+    # Get a file name
+    fileName = input('Enter the file name: ')
+    # Open the file
+    infile = open(fileName, 'r')
+    # Get the score line by line
+    for i in infile:
+        score = eval(i)
+        # Convert to index to lookup
+        index = score // 10
+        # Rule them all
+        print('Your grade is {0}.'.format(grades[index]))
+    infile.close()
 
 main()
                 

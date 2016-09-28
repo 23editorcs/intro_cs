@@ -11,23 +11,34 @@
 def main():
     # Introduction
     print('The program encrypts a message by Caesar cipher.')
-    # Get a message and a key
-    message = input('Enter your message to encrypt: ')
-    key = eval(input('What is the secret key.'))
-    # Seperate the message into words
-    words = message.split()
-    # Create an encrypt message
-    encrypt = ''
-    # Encode the message word by word
-    for word in words:
-        for i in word:
-            num = ord(i)
-            numEncode = (num + key) % (91 + num // 97 * 32) + \
-                        (num + key) // (91 + num // 97 * 32) * \
-                        (65 + num // 97 * 32)
-            encrypt = encrypt + chr(numEncode)
-        encrypt = encrypt + " "
-    # Rule them all
-    print('Your message is {0}.'.format(encrypt))
+    # Get a origin file name & the encrypt file name
+    infileName = input('Enter the origin file name: ')
+    outfileName = input('Where do we put the secret message: ')
+    # Open 2 files
+    infile = open(infileName, 'r')
+    outfile = open(outfileName, 'w')
+    # Read the infile line by line
+    for line in infile:
+        # Get a message and a key, seperate by a dot.
+        lines = line.split('.')
+        message = lines[0]
+        key = eval(lines[1])
+        # Seperate the message into words
+        words = message.split()
+        # Create an encrypt message
+        encrypt = ''
+        # Encode the message word by word
+        for word in words:
+            for i in word:
+                num = ord(i)
+                numEncode = (num + key) % (91 + num // 97 * 32) + \
+                            (num + key) // (91 + num // 97 * 32) * \
+                            (65 + num // 97 * 32)
+                encrypt = encrypt + chr(numEncode)
+            encrypt = encrypt + " "
+        # Rule them all
+        print('{0}'.format(encrypt), file = outfile)
+    infile.close()
+    outfile.close()
 
 main()
