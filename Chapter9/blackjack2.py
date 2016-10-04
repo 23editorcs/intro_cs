@@ -13,8 +13,8 @@ import time
 def main():
     printIntro()
     n = getInput()
-    busted = simNGames(n)
-    printOutput(busted, n)
+    bustedList = simNGames(n)
+    printOutput(bustedList)
 
 def printIntro():
     print('This program simulates the n number of black jack games.' \
@@ -22,25 +22,29 @@ def printIntro():
 
 def getInput():
     # Returns the n number of games to be simulated
-    n = int(input('How many games to be simulate? '))
+    n = int(input('How many games to simulate? '))
     return n
 
 def simNGames(n):
     # Simulates the n number of black jack games.
     # Returns the probability that the dealer gets busted
     bustedList = []
+    # Show the first card of dealer, from 1-10
+    # In per case, calculate the probability that the dealer is busted
+    # with n games.
+    
     for total in range(1,11):
         busted = 0
         for i in range(n):
-            getBusted = simOneGame()
+            getBusted = simOneGame(total)
             if getBusted:
                 busted += 1
-        bustedList = bustedList.append(busted)
+        bustedList.append(busted/n)
+    return bustedList
 
-def simOneGame():
+def simOneGame(total):
     # Simulates one black jack game
     # Return True if the dealer gets busted, otherwise False
-    total = 0
     hasAce = False
     while not isEnough(total, hasAce):
         card = dealCard()
@@ -79,8 +83,10 @@ def isEnough(total, hasAce):
         return True
     else: return False
 
-def printOutput(busted, n):
-    print('Your probability of busted is {:.1%}.'.format(busted/n))
+def printOutput(bustedList):
+    for i in range(1, 11):
+        print('The dealer busted probability with {0} start card is {1}.'\
+              .format(i, bustedList[i - 1]))
 
 if __name__ == '__main__':
     startTime = time.time()
