@@ -25,7 +25,7 @@ class Button:
         self.isChoose = False
 
     def getLabel(self):
-        return self.label
+        return self.label.getText()
 
     def active(self):
         # Sets the button to active
