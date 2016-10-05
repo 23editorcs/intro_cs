@@ -21,19 +21,19 @@ class Button:
         self.rect.draw(win)
         self.label = Text(center, label)
         self.label.draw(win)
-        self.active()
+        self.deactivate()
         self.isChoose = False
 
     def getLabel(self):
         return self.label.getText()
 
-    def active(self):
+    def activate(self):
         # Sets the button to active
         self.active = True
         self.label.setFill('black')
         self.rect.setWidth(2)
 
-    def deactive(self):
+    def deactivate(self):
         # Sets the button to deactive
         self.active = False
         self.label.setFill('lightgray')

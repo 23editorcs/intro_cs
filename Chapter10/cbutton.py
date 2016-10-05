@@ -18,7 +18,7 @@ class CButton:
         self.cir = Circle(center, radius)
         self.cir.setFill('lightgray')
 
-        self.active()
+        self.deactivate()
         self.cir.draw(win)
         self.label.draw(win)
 
@@ -31,12 +31,12 @@ class CButton:
     def getRadius(self):
         return self.radius
 
-    def active(self):
+    def activate(self):
         self.active = True
         self.label.setFill('black')
         self.cir.setWidth(2)
 
-    def deactive(self):
+    def deactivate(self):
         self.active = False
         self.label.setFill('lightgray')
         self.cir.setWidth(1)
@@ -46,15 +46,6 @@ class CButton:
         dx = sqrt((px - self.x)**2 + (py - self.y)**2)
         return self.active and dx <= self.radius
 
-def main():
-    win = GraphWin()
-    b = CButton(win, Point(50, 50), 10, 'Tron')
-    while True:
-        p = win.getMouse()
-        if b.clicked(p):
-            win.close()
 
-if __name__ == '__main__':
-    main()
         
         
