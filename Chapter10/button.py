@@ -10,6 +10,7 @@ class Button:
     p is inside it."""
 
     def __init__(self, win, center, width, height, label):
+        # win, center, width, height, label
         w, h = width / 2.0, height / 2.0
         x, y = center.getX(), center.getY()
         self.xmax, self.xmin = x + w, x - w

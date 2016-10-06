@@ -12,13 +12,20 @@
 '''
 
 from math import cos, sin, radians
+from tracker import Tracker
+from graphics import *
 
 def main():
+    win = GraphWin('CannonBall', 500, 500)
+    win.setCoords(-100,-100,100,100)
     angle, vel, h0, time = getInputs()
     cball = Projectile(angle, vel, h0)
+    track = Tracker(win, cball)
     while cball.getY() >= 0:
         cball.update(time)
-    print('\nThe distrance traveled: %0.1f meters.' % (cball.getMaxY()))
+        track.update(cball)
+    print('\nThe distrance traveled: %0.1f meters.' % (cball.getY()))
+    print(track)
 
 def getInputs():
     angle = float(input('What is the angle of the launch: '))
