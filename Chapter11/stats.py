@@ -14,29 +14,24 @@ def main():
     print('The standard deviaton is', std)
     print('The median is', med)
 
-def getNumbers():
-    data = []
-    xStr = input('Enter a number (<Enter> to quit) >> ')
-    while xStr != '':
-        data.append(eval(xStr))
-        xStr = input('Enter a number (<Enter> to quit) >> ')
-    return data
 
-def mean(data):
+
+def mean(nums):
     sums = 0.0
     for num in data:
         sums += num
     return sums / len(data)
 
-def stdDev(data, xbar):
+def stdDev(nums:
     sumDevSq = 0.0
+    xbar = mean(nums)
     for num in data:
         dev = num - xbar
         sumDevSq += dev * dev
 
     return sqrt(sumDevSq / (len(data) - 1))
 
-def median(data):
+def median(nums):
     data.sort()
     size = len(data)
     midPos = size // 2
