@@ -36,7 +36,7 @@ def median(nums):
     size = len(data)
     midPos = size // 2
     if size % 2 == 0:
-        median = (data[midPos - 1] + data[midPos + 1]) / 2.0
+        median = (data[midPos] + data[midPos - 1]) / 2.0
     else:
         median = data[midPos]
     return median
