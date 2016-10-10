@@ -198,6 +198,7 @@ class GraphicsInterface:
             view = DieView(self.win, center, size)
             self.dice.append(view)
             center.move(1.5*size, 0)
+        print(self.dice)
 
     def addDiceButtons(self, center, width, height):
         center.move(-3*width, 0)
