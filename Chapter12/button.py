@@ -25,6 +25,10 @@ class Button:
         self.deactivate()
         self.isChoose = False
 
+    def undraw(self):
+        self.rect.undraw()
+        self.label.undraw()
+
     def getLabel(self):
         return self.label.getText()
 
